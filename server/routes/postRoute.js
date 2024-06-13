@@ -13,8 +13,11 @@ const storage = multer.diskStorage({
 });
 router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 const upload = multer({ storage: storage });
-router.get("/all",postController.getPosts);
-router.post("/add",upload.single("file"),postController.addPost);
-router.post("/like/:postId",postController.likeOnPost);
-router.post("/comment/:postId",postController.commentOnPost);
+router.get("/all", postController.getPosts);
+router.get("/:postId", postController.getPostById);
+router.post("/add", upload.single("file"), postController.addPost);
+router.post("/update/:postId", upload.single("file"), postController.updatePost);
+router.delete("/delete/:postId", postController.deletePost);
+router.post("/like/:postId", postController.likeOnPost);
+router.post("/comment/:postId", postController.commentOnPost);
 module.exports=router;

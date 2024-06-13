@@ -10,20 +10,23 @@ function App() {
 	return (
 		<Router>
 			<div className="app">
-				<nav>
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
+				<nav className="navbar">
+					<ul className="nav-list">
+						<li className="nav-item">
+							<Link to="/" className="nav-link">Home</Link>
 						</li>
-						<li>
-							<Link to="/create">Create Post</Link>
+						<li className="nav-item">
+							<Link to="/create" className="nav-link">Create Post</Link>
 						</li>
 					</ul>
 				</nav>
-				<Routes>
-					<Route path="/create" element={<CreatePost />} />
-					<Route path="/" element={<Home />} />
-				</Routes>
+				<div className="content">
+					<Routes>
+						<Route path="/create" element={<CreatePost />} />
+						<Route path="/edit/:postId" element={<CreatePost />} />
+						<Route path="/" element={<Home />} />
+					</Routes>
+				</div>
 			</div>
 		</Router>
 	);
